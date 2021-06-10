@@ -3,6 +3,7 @@ package kodlamaio.northwind.business.concretes;
 
 import java.util.List;
 
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -90,6 +91,11 @@ public class ProductManager implements ProductService {
 
 		return new SuccessDataResult<List<Product>>
 				(this.productDao.findAll(sort),"Başarılı");
+	}
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails(), " Data listelendi");
 	}
 
 }
